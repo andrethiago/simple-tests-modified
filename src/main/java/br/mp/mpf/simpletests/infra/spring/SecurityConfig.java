@@ -18,11 +18,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-	// auth.inMemoryAuthentication().withUser("joao").password("123456").roles("USER");
-	// auth.inMemoryAuthentication().withUser("maria").password("qwerty").roles("USER");
-	// auth.inMemoryAuthentication().withUser("jose").password("abcdef").roles("USER",
-	// "ADMIN");
-
 	auth.jdbcAuthentication().dataSource(dataSource)
 		.usersByUsernameQuery("select email,senha, ativo from usuario where email=?")
 		.authoritiesByUsernameQuery(
@@ -33,7 +28,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 	http.csrf().disable();
 	http.authorizeRequests().antMatchers("/resources/**").permitAll();
-	http.authorizeRequests().antMatchers("/**/usuarios**/**").hasRole("ADMIN");
 	http.authorizeRequests().anyRequest().authenticated();
 	http.formLogin().loginPage("/login").permitAll().defaultSuccessUrl("/app/index.html");
 
