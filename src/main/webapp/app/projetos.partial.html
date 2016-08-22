@@ -1,0 +1,51 @@
+<!-- <div class="container" ng-controller="ProjetosController"> -->
+<div class="container">
+
+	<h2>Projetos <small>Gerenciando os projetos existentes</small> </h2> 
+	
+	<div class="alert alert-success alert-dismissible" role="alert" ng-if="mensagemSucesso">
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	  <strong>Mensagem</strong> {{mensagemSucesso}}
+	</div>
+	
+	<div class="alert alert-warning alert-dismissible" role="alert" ng-if="mensagemAviso">
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	  <strong>Atenção</strong> {{mensagemAviso}}
+	</div>
+	
+	<div class="alert alert-danger alert-dismissible" role="alert" ng-if="mensagemErro">
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	  <strong>Erro</strong> {{mensagemErro}}
+	</div>
+	
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">Projetos existentes</div>
+		<div class="panel-body">
+			<input class="form-control" type="text" ng-model="filtro" placeholder="Filtre os projetos"/>
+			<table class="table table-hover">
+				<tr>
+					<th>#</th>
+					<th>Nome</th>
+					<th>Descrição</th>
+					<th></th>
+				</tr>
+				<tr ng-repeat="projeto in projetos | filter : {nome : filtro} | orderBy: '+nome'">
+					<td>{{$index + 1}}</td>
+					<td><a href="#/projetos/{{projeto.id}}">{{projeto.nome}}</a></td>
+					<td>{{projeto.descricao}}</td>
+					<td>
+						<button class="btn btn-default btn-mini" title="Alterar o projeto" ng-click="exibirFormulario(projeto)">
+							<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+						</button>
+						<button class="btn btn-danger btn-mini" title="Excluir o projeto" ng-click="excluirProjeto(projeto)">
+							<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+						</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<a href="#/novo" class="btn btn-primary">Novo Projeto</a>
+</div>
