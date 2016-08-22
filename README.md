@@ -1,8 +1,4 @@
 # simple-tests
-Aplicação de exemplo para o curso Spring MVC  + AngularJS ministrado no MPF.
+Versão modificad da aplicação de exemplo para o curso Spring MVC  + AngularJS ministrado no MPF.
 
-Aula 08:
-
-* Spring Security
-  * Criando a configuração do Spring Security.
-  * Criando uma página de login.
+Utilizado para o post sobre Selenium + Page Object no blog codeatest.com
