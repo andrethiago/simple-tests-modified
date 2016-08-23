@@ -1,5 +1,7 @@
 angular.module('simpleTests').controller('UsuariosController', function($scope, $http, UsuariosService) {
 	
+	console.log('controller')
+	
 	$scope.usuarios = [];
 	$scope.mensagemSucesso = null;
 	$scope.mensagemAviso = null;
