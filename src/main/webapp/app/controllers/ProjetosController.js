@@ -2,9 +2,6 @@ angular.module('simpleTests').controller('ProjetosController', function ($scope,
 	
 	$scope.projeto = null;
 	$scope.projetos = [];
-	$scope.mensagemSucesso = null;
-	$scope.mensagemAviso = null;
-	$scope.mensagemErro = null;
 	$scope.exibeFormulario = false;
 	
 	
@@ -23,23 +20,15 @@ angular.module('simpleTests').controller('ProjetosController', function ($scope,
 			ProjetosService.alterar(projeto).success(function(data) {
 				if(data.sucesso) {
 					$scope.projeto = {};
-					$scope.mensagemSucesso = data.mensagem;
 					$scope.escondeFormulario();
 					carregarProjetos();
-				} else {
-					$scope.mensagemAviso = data.erro.mensagem;
 				}
 			});
 		} else {
 			ProjetosService.incluir(projeto).success(function(data) {
 				if(data.sucesso) {
 					$scope.projeto = {};
-					$scope.mensagemSucesso = data.mensagem;
-					//$scope.escondeFormulario();
-					//carregarProjetos();
 					$location.path('#/projetos');
-				} else {
-					$scope.mensagemAviso = data.erro.mensagem;
 				}
 			});
 		}
@@ -50,10 +39,7 @@ angular.module('simpleTests').controller('ProjetosController', function ($scope,
 	$scope.excluirProjeto = function(projeto) {
 		ProjetosService.excluir(projeto).success(function(data) {
 			if(data.sucesso) {
-				$scope.mensagemSucesso = data.mensagem;
 				carregarProjetos();
-			} else {
-				$scope.mensagemAviso = data.erro.mensagem;
 			}
 		}).error(function(data) {
 			console.log('error')
@@ -64,10 +50,6 @@ angular.module('simpleTests').controller('ProjetosController', function ($scope,
 	var carregarProjetos = function() {
 		ProjetosService.getProjetos().success(function(data) {
 			$scope.projetos = data.dados;
-			// adicionando uma data de início do projeto
-//			angular.forEach($scope.projetos, function(projeto) {
-//				projeto.data = new Date();
-//			});
 		})
 	};
 	

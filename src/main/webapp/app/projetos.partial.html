@@ -1,19 +1,18 @@
-<!-- <div class="container" ng-controller="ProjetosController"> -->
 <div class="container">
 
 	<h2>Projetos <small>Gerenciando os projetos existentes</small> </h2> 
 	
-	<div class="alert alert-success alert-dismissible" role="alert" ng-if="mensagemSucesso">
+	<div class="alert alert-success alert-dismissible" role="alert" ng-show="mensagemSucesso">
 	  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	  <strong>Mensagem</strong> {{mensagemSucesso}}
 	</div>
 	
-	<div class="alert alert-warning alert-dismissible" role="alert" ng-if="mensagemAviso">
+	<div class="alert alert-warning alert-dismissible" role="alert" ng-show="mensagemAviso">
 	  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	  <strong>Atenção</strong> {{mensagemAviso}}
 	</div>
 	
-	<div class="alert alert-danger alert-dismissible" role="alert" ng-if="mensagemErro">
+	<div class="alert alert-danger alert-dismissible" role="alert" ng-show="mensagemErro">
 	  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	  <strong>Erro</strong> {{mensagemErro}}
 	</div>
