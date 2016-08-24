@@ -21,7 +21,7 @@ public class InclusaoNovoProjetoTest {
     }
 
     @Test
-    public void loginComSucesso() {
+    public void inclusaoProjetoComSucesso() {
 	LoginPage loginPage = new LoginPage(driver);
 	ListaProjetosPage homePage = loginPage.
 					visita("http://localhost:8080/simpletests").
